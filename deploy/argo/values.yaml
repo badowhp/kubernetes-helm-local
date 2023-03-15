@@ -1,0 +1,18 @@
+server:
+  metrics:
+    enabled: false
+  ingress:
+    enabled: true
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: HTTP
+    https: true
+    ingressClassName: nginx
+    hosts:
+      - "localhost"   
+crds:
+  install: true
+redis-ha:
+  enabled: false
+
+# you can see all possible values here: https://artifacthub.io/packages/helm/argo/argo-cd/5.4.4
+# if you use other version please keep in mind that values changed with time.
