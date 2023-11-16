@@ -1,16 +1,18 @@
 namespaces:
   ingress:
   argocd:
+  mariadb:
   
 helmRepos:
   ingress-nginx: https://kubernetes.github.io/ingress-nginx
   argocd: https://argoproj.github.io/argo-helm
+  mariadb: https://charts.bitnami.com/bitnami 
 apps:
   ingress-nginx:
     enabled: true
     wait: true # wait till ready, else it will to call the ingress admission webhooks
     namespace: ingress
-    chart: ingress-nginx/ingress-nginx
+    chart: ingress-nginx/ingress-nginx #provide first REPO name defined above, then HELM chart name
     version: 4.0.19
     valuesFiles:
       - ./ingress-nginx/values.yaml
@@ -18,10 +20,21 @@ apps:
   argocd:
     enabled: true
     namespace: argocd
-    chart: argo/argo-cd
+    chart: argocd/argo-cd
     version: 5.4.4
     valuesFiles:
       - ./argo/values.yaml
     priority: -85
+  mariadb:
+    enabled: true
+    namespace: mariadb
+    chart: "mariadb/mariadb-galera"
+    version: 9.0.4
+    valuesFiles:
+      - ./mariadb/values.yaml
+    priority: -85
+
+
+
 
 

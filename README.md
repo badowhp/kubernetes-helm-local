@@ -5,9 +5,15 @@
 ## requirements
 
 - https://github.com/Praqma/helmsman
+- go + docker/podman
+
+choose one which fits the most ure usecase:
 - https://github.com/kubernetes/minikube
 - https://kind.sigs.k8s.io/
-- go + docker
+
+other Option to install:
+
+- https://rancherdesktop.io/ 
 
 ## how to
 
@@ -26,10 +32,5 @@ kind
 - make deploy-setup
 
 - make delete-kind-cluster
-
-With the kind cluster you can access the ingress via localhost with the configuration provided in ingress values.
-I recommend you to try both solutions.
-
-ToDO: add insecure to argo values
 
 
